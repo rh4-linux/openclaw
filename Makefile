@@ -1,4 +1,4 @@
-.PHONY: pull onboard up down logs status dashboard
+.PHONY: pull onboard up down logs status dashboard audit audit-fix
 
 pull:
 	docker compose pull
@@ -21,3 +21,9 @@ status:
 
 dashboard:
 	docker compose run --rm openclaw-cli dashboard --no-open
+
+audit:
+	docker compose run --rm openclaw-cli security audit --deep
+
+audit-fix:
+	docker compose run --rm openclaw-cli security audit --fix
