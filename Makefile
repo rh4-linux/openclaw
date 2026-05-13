@@ -1,4 +1,4 @@
-.PHONY: pull onboard up down logs status dashboard audit audit-fix
+.PHONY: pull onboard up down logs status dashboard token audit audit-fix
 
 pull:
 	docker compose pull
@@ -21,6 +21,15 @@ status:
 
 dashboard:
 	docker compose run --rm openclaw-cli dashboard --no-open
+
+token:
+	@TOKEN=$$(grep OPENCLAW_GATEWAY_TOKEN .env 2>/dev/null | cut -d= -f2); \
+	if [ -z "$$TOKEN" ]; then \
+		TOKEN=$$(openssl rand -hex 32); \
+		echo "OPENCLAW_GATEWAY_TOKEN=$$TOKEN" >> .env; \
+		echo "Generated new token."; \
+	fi; \
+	echo "http://127.0.0.1:18789/#token=$$TOKEN"
 
 audit:
 	docker compose run --rm openclaw-cli security audit --deep
