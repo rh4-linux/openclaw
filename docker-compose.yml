@@ -13,6 +13,7 @@ services:
       OPENCLAW_DISABLE_BONJOUR: "1"
       GROQ_API_KEY: ${GROQ_API_KEY:-}
       GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:-}
       TZ: ${OPENCLAW_TZ:-UTC}
     volumes:
       - ./data/config:/home/node/.openclaw
