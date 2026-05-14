@@ -1,4 +1,8 @@
-.PHONY: pull onboard up down logs status dashboard token audit audit-fix
+.PHONY: pull onboard up down logs status dashboard token certs audit audit-fix
+
+certs:
+	mkdir -p certs
+	mkcert -cert-file certs/cert.pem -key-file certs/key.pem 192.168.1.216 localhost 127.0.0.1
 
 pull:
 	docker compose pull
