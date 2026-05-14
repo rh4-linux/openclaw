@@ -12,7 +12,7 @@ onboard:
 		dist/index.js onboard --mode local --no-install-daemon
 
 up:
-	docker compose up -d openclaw-gateway
+	docker compose up -d openclaw-gateway nginx
 
 down:
 	docker compose down
